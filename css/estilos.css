@@ -1,8 +1,20 @@
 
 .card { background:#fff; border:1px solid #e5e7eb; border-radius:1rem; box-shadow:0 1px 1px rgba(0,0,0,.03); }
-.seg { cursor:pointer; transition: filter .2s ease, opacity .2s ease; }
-.seg:hover { filter: brightness(1.08); opacity: .96; }
-.seg-active { filter: saturate(1.25) brightness(1.05) drop-shadow(0 2px 6px rgba(0,0,0,.15)); }
-/* Tooltip */
+.seg { cursor:pointer; transition: filter .15s ease; }
+.seg:hover { filter: brightness(1.08); }
+.seg-active { filter: brightness(1.12) drop-shadow(0 2px 8px rgba(0,0,0,.18)); }
 #wheelTip { position:absolute; pointer-events:none; background:#111827; color:#fff; padding:.4rem .55rem; border-radius:.5rem; font-size:12px; line-height:1.2; opacity:0; transform:translate(-50%,-120%); transition:opacity .15s ease; max-width:240px; }
 #wheelTip.show { opacity:1; }
+
+.seg-label { cursor: pointer; pointer-events: all; }
+
+
+/* Stronger hover + selection */
+.seg { transform-box: fill-box; transform-origin: center; }
+.seg:hover { filter: brightness(1.1); transform: scale(1.05); }
+.seg-active { filter: brightness(1.15) drop-shadow(0 2px 10px rgba(0,0,0,.25)); transform: scale(1.06); }
+/* Clickable curved labels */
+.seg-label { cursor: pointer; pointer-events: all; }
+
+/* Simulated hover state (used when hovering text labels) */
+.seg-hover { filter: brightness(1.1); transform: scale(1.05); }

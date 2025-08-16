@@ -1,0 +1,17 @@
+
+/* Wheel intro animation (non-intrusive). Runs once on page load. */
+@media (prefers-reduced-motion: no-preference) {
+  #wheel-rotor.intro-animate {
+    animation: wheelIntro 800ms cubic-bezier(.2,.8,.2,1);
+    will-change: transform, opacity;
+  }
+  @keyframes wheelIntro {
+    0%   { transform: scale(.94) rotate(-6deg); opacity: 0;   }
+    60%  { transform: scale(1.02) rotate(1deg); opacity: 1;   }
+    100% { transform: scale(1) rotate(0);       opacity: 1;   }
+  }
+}
+/* If user prefers reduced motion, we skip the animation entirely */
+@media (prefers-reduced-motion: reduce) {
+  #wheel-rotor.intro-animate { animation: none !important; opacity: 1; }
+}

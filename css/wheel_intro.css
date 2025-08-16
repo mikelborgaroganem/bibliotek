@@ -1,15 +1,14 @@
-/* Wheel intro animation (giro + pop) */
+/* Wheel intro animation: un giro completo muy sutil */
 @media (prefers-reduced-motion: no-preference) {
   #wheel-rotor.intro-animate {
-    animation: wheelIntro 2200ms cubic-bezier(.22,1,.36,1);
+    animation: wheelIntro 1800ms ease-out;
     will-change: transform, opacity;
   }
 
   @keyframes wheelIntro {
-    0%   { transform: scale(.8) rotate(-360deg); opacity: 0; }
-    40%  { transform: scale(1.05) rotate(-180deg); opacity: 1; }
-    70%  { transform: scale(.97) rotate(-60deg); }
-    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    0%   { transform: rotate(-360deg); opacity: 0; }
+    20%  { opacity: 1; }
+    100% { transform: rotate(0deg); opacity: 1; }
   }
 }
 

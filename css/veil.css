@@ -8,7 +8,7 @@
   align-items: flex-start;   /* caja arriba */
   justify-content: center;   /* centrado horizontal */
   padding-top: 1rem;         /* separación desde arriba */
-  background: #ffffff;       /* blanco sólido: oculta lo de abajo completamente */
+  background: #f9fafb;       /* blanco sólido: oculta lo de abajo completamente */
   z-index: 3;
   transition: opacity .18s ease, visibility .18s ease;
   opacity: 1; visibility: visible;

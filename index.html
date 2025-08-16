@@ -4,11 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Showcase de Formatos</title>
-  <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- PapaParse (CSV) -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-  <!-- Estilos propios -->
   <link rel="stylesheet" href="css/estilos.css" />
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -20,45 +17,45 @@
   </header>
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <!-- Rueda (sin autoplay y sin botones) -->
     <section class="mb-6">
       <div class="card p-4 sm:p-6 relative">
         <div class="flex justify-center">
           <div class="relative">
-            <svg id="funnelWheel" viewBox="0 0 320 320" width="300" height="300" aria-label="Selector de funnel">
+            <svg id="funnelWheel" viewBox="0 0 320 320" width="340" height="340" aria-label="Selector de funnel">
               <defs>
-                <linearGradient id="gAw" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stop-color="#ff1f1f"/><stop offset="100%" stop-color="#cc0000"/>
-                </linearGradient>
-                <linearGradient id="gCo" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#1f2937"/><stop offset="100%" stop-color="#000000"/>
-                </linearGradient>
-                <linearGradient id="gCv" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="#0369a1"/>
-                </linearGradient>
-                <linearGradient id="gLy" x1="100%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#9ca3af"/><stop offset="100%" stop-color="#6b7280"/>
-                </linearGradient>
-                <filter id="shadow"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity=".15"/></filter>
+                <path id="segAw" d="M 246.321 76.641 A 120.000 120.000 0 0 1 246.321 243.359" />
+                <path id="segCo" d="M 243.359 246.321 A 120.000 120.000 0 0 1 76.641 246.321" />
+                <path id="segCv" d="M 73.679 243.359 A 120.000 120.000 0 0 1 73.679 76.641" />
+                <path id="segLy" d="M 76.641 73.679 A 120.000 120.000 0 0 1 243.359 73.679" />
+                <path id="txAw" d="M 257.082 89.466 A 120.000 120.000 0 0 1 257.082 230.534" />
+                <path id="txCo" d="M 230.534 257.082 A 120.000 120.000 0 0 1 89.466 257.082" />
+                <path id="txCv" d="M 62.918 230.534 A 120.000 120.000 0 0 1 62.918 89.466" />
+                <path id="txLy" d="M 89.466 62.918 A 120.000 120.000 0 0 1 230.534 62.918" />
               </defs>
 
-              <g id="wheel-rotor" transform-origin="160 160" filter="url(#shadow)">
-                <!-- Segmentos -->
-                <path id="Awareness" class="seg" data-angle="0" data-kpi="Reach, Viewable Impressions, VTR" fill="url(#gAw)"
-                      d="M160,160 L160,20 A140,140 0 0,1 300,160 Z"/>
-                <path id="Consideration" class="seg" data-angle="90" data-kpi="CTR, Engagements, Time on Site" fill="url(#gCo)"
-                      d="M160,160 L300,160 A140,140 0 0,1 160,300 Z"/>
-                <path id="Conversion" class="seg" data-angle="180" data-kpi="CVR, CPA, ROAS" fill="url(#gCv)"
-                      d="M160,160 L160,300 A140,140 0 0,1 20,160 Z"/>
-                <path id="Loyalty" class="seg" data-angle="270" data-kpi="Repeat Rate, LTV, CRM engagement" fill="url(#gLy)"
-                      d="M160,160 L20,160 A140,140 0 0,1 160,20 Z"/>
-                <!-- Agujero -->
-                <circle cx="160" cy="160" r="88" fill="#fff"></circle>
-                <!-- Labels simples (como la versión que te funcionó mejor) -->
-                <text x="160" y="48" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">Alcance</text>
-                <text transform="rotate(90 160 160)" x="160" y="48" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">Consideración</text>
-                <text transform="rotate(180 160 160)" x="160" y="48" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">Conversión</text>
-                <text transform="rotate(270 160 160)" x="160" y="48" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">Fidelización</text>
+              <g id="wheel-rotor" transform-origin="160 160">
+                <g id="segments" stroke-linecap="round" fill="none" stroke-width="60">
+                  <use href="#segAw" class="seg" id="Awareness" data-angle="0" stroke="#e30613" data-kpi="Reach, Viewable Impressions, VTR"></use>
+                  <use href="#segCo" class="seg" id="Consideration" data-angle="90" stroke="#111111" data-kpi="CTR, Engagements, Time on Site"></use>
+                  <use href="#segCv" class="seg" id="Conversion" data-angle="180" stroke="#0ea5b7" data-kpi="CVR, CPA, ROAS"></use>
+                  <use href="#segLy" class="seg" id="Loyalty" data-angle="270" stroke="#737373" data-kpi="Repeat Rate, LTV, CRM engagement"></use>
+                </g>
+                <!-- doughnut hole -->
+                <circle cx="160" cy="160" r="90.0" fill="#fff"></circle>
+
+                <!-- Curved labels: centered along each arc and vertically within the stroke -->
+                <text class="seg-label" data-for="Awareness" data-angle="0" font-size="15" font-weight="700" fill="#ffffff">
+                  <textPath href="#txAw" startOffset="50%" text-anchor="middle">Awareness</textPath>
+                </text>
+                <text class="seg-label" data-for="Consideration" data-angle="90" font-size="15" font-weight="700" fill="#ffffff">
+                  <textPath href="#txCo" startOffset="50%" text-anchor="middle">Consideration</textPath>
+                </text>
+                <text class="seg-label" data-for="Conversion" data-angle="180" font-size="15" font-weight="700" fill="#ffffff">
+                  <textPath href="#txCv" startOffset="50%" text-anchor="middle">Conversion</textPath>
+                </text>
+                <text class="seg-label" data-for="Loyalty" data-angle="270" font-size="15" font-weight="700" fill="#ffffff">
+                  <textPath href="#txLy" startOffset="50%" text-anchor="middle">Loyalty</textPath>
+                </text>
               </g>
             </svg>
             <div id="wheelTip" class="rounded-lg shadow"></div>
@@ -67,7 +64,7 @@
       </div>
     </section>
 
-    <!-- Controles estándar -->
+    <!-- Filtros -->
     <section class="card p-4 sm:p-6 mb-6">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div>
@@ -158,9 +155,8 @@
     </div>
   </dialog>
 
-  <!-- Scripts propios -->
   <script>window.SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyCQIZ4gT0edBj419T4wD480ZICN-VC00_isFwRGRTeLwRtVWzHJrW3sm2lqF5hewptcv-yNY6_K3O/pub?gid=179561696&single=true&output=csv";</script>
-  <script src="js/rueda.js"></script>
+  <script src="js/rueda_ring_nogsap.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Showcase de Formatos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <header class="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-4">
+      <h1 class="text-xl sm:text-2xl font-semibold">Showcase de Formatos</h1>
+      <span class="ml-auto text-xs text-gray-500" id="status">Cargando…</span>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <section class="mb-6">
+      <div class="card p-4 sm:p-6 relative">
+        <div class="flex justify-center">
+          <div class="relative">
+            <svg id="funnelWheel" viewBox="0 0 320 320" width="340" height="340" aria-label="Selector de funnel">
+              <defs>
+                <path id="segAw" d="M 246.321 76.641 A 120.000 120.000 0 0 1 246.321 243.359" />
+                <path id="segCo" d="M 243.359 246.321 A 120.000 120.000 0 0 1 76.641 246.321" />
+                <path id="segCv" d="M 73.679 243.359 A 120.000 120.000 0 0 1 73.679 76.641" />
+                <path id="segLy" d="M 76.641 73.679 A 120.000 120.000 0 0 1 243.359 73.679" />
+                <path id="txAw" d="M 257.082 89.466 A 120.000 120.000 0 0 1 257.082 230.534" />
+                <path id="txCo" d="M 230.534 257.082 A 120.000 120.000 0 0 1 89.466 257.082" />
+                <path id="txCv" d="M 62.918 230.534 A 120.000 120.000 0 0 1 62.918 89.466" />
+                <path id="txLy" d="M 89.466 62.918 A 120.000 120.000 0 0 1 230.534 62.918" />
+              </defs>
+
+              <g id="wheel-rotor" transform-origin="160 160">
+                <g id="segments" stroke-linecap="round" fill="none" stroke-width="60">
+                  <use href="#segAw" class="seg" id="Awareness" data-angle="0" stroke="#e30613" data-kpi="Reach, Viewable Impressions, VTR"></use>
+                  <use href="#segCo" class="seg" id="Consideration" data-angle="90" stroke="#111111" data-kpi="CTR, Engagements, Time on Site"></use>
+                  <use href="#segCv" class="seg" id="Conversion" data-angle="180" stroke="#0ea5b7" data-kpi="CVR, CPA, ROAS"></use>
+                  <use href="#segLy" class="seg" id="Loyalty" data-angle="270" stroke="#737373" data-kpi="Repeat Rate, LTV, CRM engagement"></use>
+                </g>
+                <!-- doughnut hole -->
+                <circle cx="160" cy="160" r="90.0" fill="#fff"></circle>
+
+                <!-- Curved labels: centered along each arc and vertically within the stroke -->
+                <text class="seg-label" data-for="Awareness" data-angle="0" font-size="15" font-weight="700" fill="#ffffff">
+                  <textPath href="#txAw" startOffset="50%" text-anchor="middle">Awareness</textPath>
+                </text>
+                <text class="seg-label" data-for="Consideration" data-angle="90" font-size="15" font-weight="700" fill="#ffffff">
+                  <textPath href="#txCo" startOffset="50%" text-anchor="middle">Consideration</textPath>
+                </text>
+                <text class="seg-label" data-for="Conversion" data-angle="180" font-size="15" font-weight="700" fill="#ffffff">
+                  <textPath href="#txCv" startOffset="50%" text-anchor="middle">Conversion</textPath>
+                </text>
+                <text class="seg-label" data-for="Loyalty" data-angle="270" font-size="15" font-weight="700" fill="#ffffff">
+                  <textPath href="#txLy" startOffset="50%" text-anchor="middle">Loyalty</textPath>
+                </text>
+              </g>
+            </svg>
+            <div id="wheelTip" class="rounded-lg shadow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="card p-4 sm:p-6 mb-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1" for="funnel">Funnel</label>
+          <select id="funnel" class="w-full rounded-xl border-gray-300 focus:ring-2 focus:ring-indigo-500">
+            <option value="">Todos</option>
+            <option>Awareness</option>
+            <option>Consideration</option>
+            <option>Conversion</option>
+            <option>Loyalty</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="attrib">Modelo de atribución</label>
+          <select id="attrib" class="w-full rounded-xl border-gray-300 focus:ring-2 focus:ring-indigo-500">
+            <option value="">Todos</option>
+            <option>Last Click</option>
+            <option>First Click</option>
+            <option>Linear</option>
+            <option>Time Decay</option>
+            <option>Data-Driven</option>
+            <option>Position-Based</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="platform">Plataforma / Canal</label>
+          <input id="platform" type="text" placeholder="Display, Video, Social…" class="w-full rounded-xl border-gray-300 focus:ring-2 focus:ring-indigo-500"/>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="q">Buscar</label>
+          <input id="q" type="search" placeholder="Formato, objetivo, KPI…" class="w-full rounded-xl border-gray-300 focus:ring-2 focus:ring-indigo-500"/>
+        </div>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-2">
+        <button id="btn-clear" class="px-3 py-2 rounded-xl border border-gray-300 hover:bg-gray-50">Limpiar filtros</button>
+        <button id="btn-export" class="px-3 py-2 rounded-xl border border-gray-300 hover:bg-gray-50">Exportar filtrado (CSV)</button>
+        <a id="sheet-link" href="#" class="ml-auto text-sm text-indigo-600 hover:underline hidden" target="_blank" rel="noopener">Abrir hoja fuente</a>
+      </div>
+    </section>
+
+    <section class="mb-3 text-sm text-gray-600">
+      <span id="count">0</span> formatos · <span id="lastSync">sincronizando…</span>
+    </section>
+
+    <div id="noResults" class="text-center text-gray-500 my-8 hidden">Sin resultados</div>
+    <section id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></section>
+  </main>
+
+  <!-- Modal -->
+  <dialog id="modal" class="backdrop:bg-black/30 rounded-2xl p-0 w-full max-w-2xl">
+    <div class="bg-white rounded-2xl overflow-hidden border border-gray-200">
+      <div class="p-4 sm:p-6 border-b border-gray-200 flex items-start gap-3">
+        <div id="modalBadges" class="flex gap-2 flex-wrap"></div>
+        <button id="modalClose" class="ml-auto px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200">Cerrar</button>
+      </div>
+      <div class="p-4 sm:p-6 space-y-4">
+        <h2 id="modalTitle" class="text-xl font-semibold"></h2>
+        <div id="modalMedia" class="w-full overflow-hidden rounded-xl bg-gray-100"></div>
+        <p id="modalObjective" class="text-gray-700"></p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <h3 class="font-medium mb-1">KPIs</h3>
+            <p id="modalKpis" class="text-sm text-gray-800"></p>
+          </div>
+          <div>
+            <h3 class="font-medium mb-1">Specs creativos</h3>
+            <p id="modalSpecs" class="text-sm text-gray-800"></p>
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <h3 class="font-medium mb-1">Compra</h3>
+            <p id="modalBuying" class="text-sm text-gray-800"></p>
+          </div>
+          <div>
+            <h3 class="font-medium mb-1">Budget mínimo</h3>
+            <p id="modalBudget" class="text-sm text-gray-800"></p>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-medium mb-1">Notas</h3>
+          <p id="modalNotes" class="text-sm text-gray-800"></p>
+        </div>
+        <div class="flex gap-3">
+          <a id="modalExample" href="#" class="inline-block text-indigo-600 hover:underline text-sm" target="_blank" rel="noopener">Ver ejemplo</a>
+          <a id="modalSpecPDF" href="#" class="inline-block text-indigo-600 hover:underline text-sm" target="_blank" rel="noopener">Descargar specs</a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script>window.SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyCQIZ4gT0edBj419T4wD480ZICN-VC00_isFwRGRTeLwRtVWzHJrW3sm2lqF5hewptcv-yNY6_K3O/pub?gid=179561696&single=true&output=csv";</script>
+  <script src="js/rueda_ring_nogsap.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -5,7 +5,7 @@
 #resultsVeil {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(255,255,255,.88);
+  background: rgb(249 250 251);
   backdrop-filter: blur(1.5px);
   z-index: 3; /* enough to cover cards, not the UI around it */
   transition: opacity .18s ease, visibility .18s ease;

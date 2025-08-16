@@ -4,13 +4,15 @@
 
 #resultsVeil {
   position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  background: rgb(249 250 251);
-  backdrop-filter: blur(1.5px);
-  z-index: 3; /* enough to cover cards, not the UI around it */
+  display: flex;
+  align-items: flex-start;   /* caja arriba */
+  justify-content: center;   /* centrado horizontal */
+  padding-top: 1rem;         /* separación desde arriba */
+  background: #ffffff;       /* blanco sólido: oculta lo de abajo completamente */
+  z-index: 3;
   transition: opacity .18s ease, visibility .18s ease;
   opacity: 1; visibility: visible;
-  pointer-events: auto; /* blocks clicks on cards while active */
+  pointer-events: auto;
 }
 
 #resultsVeil.hidden {

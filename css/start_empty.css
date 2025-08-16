@@ -1,0 +1,4 @@
+
+/* Start-empty addon: keep the page short until any filter is active */
+.no-selection #grid { display: none !important; }
+.no-selection #noResults { display: block !important; }

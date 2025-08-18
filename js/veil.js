@@ -31,7 +31,7 @@
       veil.id = 'resultsVeil';
       veil.innerHTML = `
         <div class="veil-box">
-          <span class="veil-title">Selecciona un filtro</span>
+          <span class="veil-title">Selecciona un objetivo</span>
           <span>para ver los resultados</span>
         </div>`;
       wrap.appendChild(veil); // add veil inside wrapper (covers only grid area)
